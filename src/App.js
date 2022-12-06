@@ -87,11 +87,7 @@ function App() {
     <ThemeProvider theme={lightTheme}>
       <Layout>
         <Grid container spacing={2} marginY={2}>
-          <Grid md={12} >
-            <Typography variant="h5" component="h5" color={''}>
-              h1. Heading
-            </Typography>
-          </Grid>
+          
           <Grid container md={12}>
             <LargeGridGraph md={8}>
               <Card sx={{ padding: '20px' }} >
