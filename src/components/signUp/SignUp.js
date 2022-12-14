@@ -34,7 +34,7 @@ const FormInput = styled(
   TextField,
   "email-address"
 )({
-  margin: "10px",
+  margin: "10px 0px 0px 0px",
   borderRadius: "50px",
 });
 const CheckboxInput = styled(
