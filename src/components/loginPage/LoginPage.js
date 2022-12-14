@@ -1,6 +1,6 @@
 import React from 'react'
 import { deepOrange, deepPurple } from '@mui/material/colors';
-import { Avatar, Checkbox, FormControlLabel, FormGroup, Grid, styled, TextField } from '@mui/material'
+import { Avatar, Button, Checkbox, FormControlLabel, FormGroup, Grid, styled, TextField, Typography } from '@mui/material'
 import HttpsIcon from '@mui/icons-material/Https';
 const LoginGrid = styled(Grid, { name: 'login-grid' })({
     display: 'flex',
@@ -10,7 +10,8 @@ const LoginGrid = styled(Grid, { name: 'login-grid' })({
     margin: '100px 10px 10px 10px'
 })
 const FormContainer = styled(Grid, { name: 'form-container' })({
-    minWidth: 300,
+    minWidth: 500,
+    width:'500px',
     margin: '10px',
     display: 'flex',
     flexDirection: 'column',
@@ -19,26 +20,50 @@ const FormContainer = styled(Grid, { name: 'form-container' })({
 })
 
 const FormInput = styled(TextField, 'email-address')({
-    width: '80%',
     margin: '10px',
     borderRadius: '50px'
 })
 const CheckboxInput = styled(FormControlLabel, 'email-address')({
-    margin: '10px',
+  
+    alignSelf:'flex-start',
+    marginBottom:'10px'
 })
+const LoginButton = styled(Button)({
+    
+})
+const ForgotButton = styled(Button)({
+    fontSize: '0.875rem',
+    fontWeight:400,
+    margin:'10px 0px 0px 0px'
 
+})
+const SignInTitle = styled(Typography)({
+    fontFamily: "Roboto",
+    fontWeight: 400,
+    fontSize: '1.5rem',
+})
 
 
 const LoginPage = () => {
     return (
         <LoginGrid container md={12}>
-            <Avatar sx={{ bgcolor: deepPurple[500], width: 86, height: 86 }}  >
-                <HttpsIcon sx={{ width: 46, height: 46 }} />
+            <Avatar sx={{ bgcolor: deepPurple[500], width: 46, height: 46 }}  >
+                <HttpsIcon sx={{ width: 26, height: 26 }} />
             </Avatar>
+            <SignInTitle>
+            Sign in
+
+            </SignInTitle>
             <FormContainer>
-                <FormInput label="Email Address" variant="outlined" />
-                <FormInput label="Password *" variant="outlined" />
+                <FormInput fullWidth label="Email Address" variant="outlined" />
+                <FormInput fullWidth label="Password *" variant="outlined" />
                 <CheckboxInput control={<Checkbox defaultChecked />} label="Remember me" />
+                <LoginButton fullWidth variant='contained'>Login</LoginButton>
+                <Grid container alignSelf={'center'} justifyContent={"space-between"}>
+                    <ForgotButton >Forgot password?</ForgotButton>
+                    <ForgotButton>Don't have an account? Sign Up</ForgotButton>
+                </Grid>
+
             </FormContainer>
 
         </LoginGrid>
