@@ -68,7 +68,7 @@ const CopyRight = styled(Typography)({
 const SignUp = () => {
   return (
     <LoginGrid container md={12}>
-      <Avatar sx={{ bgcolor: deepPurple[500], width: 46, height: 46 }}>
+      <Avatar sx={{ bgcolor: '#9c27b0', width: 46, height: 46 }}>
         <HttpsIcon sx={{ width: 26, height: 26 }} />
       </Avatar>
       <SignInTitle>Sign Up</SignInTitle>
