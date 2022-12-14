@@ -9,6 +9,7 @@ import React from 'react';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import LoginPage from './components/loginPage/LoginPage';
+import SignUp from './components/signUp/SignUp';
 
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
   return (
     <ThemeProvider theme={lightTheme}>
       {/* <Home/> */}
-      <LoginPage/>
+      {/* <LoginPage/> */}
+      <SignUp/>
      
     </ThemeProvider>
   );
