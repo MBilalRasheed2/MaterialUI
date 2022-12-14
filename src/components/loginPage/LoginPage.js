@@ -9,14 +9,31 @@ const LoginGrid = styled(Grid, { name: 'login-grid' })({
     justifyContent: 'center',
     margin: '100px 10px 10px 10px'
 })
-const FormContainer = styled(Grid, { name: 'form-container' })({
-    minWidth: 500,
-    width:'500px',
-    margin: '10px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
+const FormContainer = styled(Grid, { name: 'form-container' })((theme)=>{
+   
+    return{
+        margin: '10px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        [theme.theme.breakpoints.up('md')]: {
+            minWidth: 500,
+            width:'480px',
+            
+        },
+        [theme.theme.breakpoints.up('sm')]: {
+            minWidth: 500,
+            width:'480px',
+            
+        },
+        [theme.theme.breakpoints.up('lg')]: {
+            minWidth: 500,
+            width:'480px',
+            
+        }
+    
+    }
 })
 
 const FormInput = styled(TextField, 'email-address')({
