@@ -45,35 +45,14 @@ const RecentDeposits = styled(Grid, { name: 'recent-deposit' })((theme) => {
       textDecoration: 'underline'
     }
   })
-  const LargeGridGraph = styled(Grid, { name: 'large-grid-graph' })((theme) => {
-    return {
-      margin: '10px 0px 10px 10px'
-    }
-  })
-  const SmallGridDeposit = styled(Grid, { name: 'snmall-grid-depsoit' })((theme) => {
-    return {
-      margin: '10px 10px 10px 10px'
-    }
-  })
-  
-  const OrderTable = styled(Grid, { name: 'order-grid-depsoit' })((theme) => {
-  
-    return {
-      [theme.theme.breakpoints.up('md')]: { margin: '0px 20px 25px 10px' },
-      [theme.theme.breakpoints.up('sm')]: { margin: '0px 20px 25px 10px' },
-      [theme.theme.breakpoints.up('lg')]: { margin: '0px 25px 25px 10px' }
-  
-  
-    }
-  })
 const Home = () => {
     return (
 
         <Layout>
             <Grid container spacing={2} marginY={2} paddingTop={10}>
 
-                <Grid container md={12}>
-                    <LargeGridGraph md={8}>
+                <Grid container md={12} sm={12}>
+                    <Grid md={8} sm={8} px={1}>
                         <Card sx={{ padding: '20px' }} >
                             <LineChart width={730} height={250} data={data}
                                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
@@ -85,8 +64,8 @@ const Home = () => {
                                 <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
                             </LineChart>
                         </Card>
-                    </LargeGridGraph>
-                    <SmallGridDeposit md={3.5} >
+                    </Grid>
+                    <Grid md={4} sm={4} px={1}>
                         <Card sx={{ padding: '20px', height: '250px' }}>
                             <Grid md={12} marginX={1}>
                                 <RecentDeposits color="secondary">Recent Deposits</RecentDeposits>
@@ -107,12 +86,11 @@ const Home = () => {
                                 </ViewRecentDeposits>
                             </Grid>
                         </Card>
-                    </SmallGridDeposit>
+                    </Grid>
                 </Grid>
-                <OrderTable container md={12}>
-                    <Orders />
-
-                </OrderTable>
+          <Grid md={12} sm={12} p={1}>
+            <Orders />
+          </Grid>
             </Grid>
         </Layout>
 

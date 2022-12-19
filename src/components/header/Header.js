@@ -141,8 +141,8 @@ const Header = () => {
         <Divider />
         <List>
           {[
-            { name: "Dashboard", Icon: <DashboardIcon onClick={()=>handleDashboard()}/> },
-            { name: "Order", Icon: <ShoppingCartIcon onClick={()=>handleOrder()} /> },
+            { name: "Dashboard", Icon: <DashboardIcon onClick={() => handleDashboard()} /> },
+            { name: "Order", Icon: <ShoppingCartIcon onClick={() => handleOrder()} /> },
             { name: "Customer", Icon: <PeopleIcon /> },
             { name: "Reports", Icon: <AssignmentIcon /> },
             { name: "Integrations", Icon: <LayersIcon /> },
@@ -182,12 +182,32 @@ const Header = () => {
             </ListItem>
           ))}
         </List>
-        <Box style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingLeft:'10px'}}>
-        <ListItemButton >
-          <LogoutIcon onClick={()=>handleLogout()}/>
-          <Button sx={{color:'black', paddingLeft:'30px'}} onClick={()=>handleLogout()}>Logout</Button>
-          </ListItemButton>
-        </Box>
+        <List>
+          {['Logout'].map((text, index) => (
+            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+                onClick={() => handleLogout()}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+
+                >
+                  <LogoutIcon />
+                </ListItemIcon>
+                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
       </Drawer>
     </>
   )
