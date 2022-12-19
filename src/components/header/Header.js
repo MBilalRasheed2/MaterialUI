@@ -1,6 +1,7 @@
 import React from 'react'
-import { Typography, Paper, List, ListItem, ListItemButton, ListItemText, ListItemIcon, Toolbar, IconButton, Divider } from '@mui/material';
+import { Typography, Paper, List, ListItem, ListItemButton, ListItemText, ListItemIcon, Toolbar, IconButton, Divider, Grid, Button, Box } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import LogoutIcon from '@mui/icons-material/Logout';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
 import AssignmentIcon from '@mui/icons-material/Assignment';
@@ -13,6 +14,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { useNavigate } from 'react-router-dom';
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -78,6 +80,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 const Header = () => {
+  const navigate = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -88,7 +91,15 @@ const Header = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  const handleLogout = () => {
+    navigate("/login")
+  };
+  const handleDashboard = () => {
+    navigate("/dashboard")
+  };
+  const handleOrder = () => {
+    navigate("/order")
+  }
 
   return (
     <>
@@ -108,9 +119,15 @@ const Header = () => {
             >
               <MenuIcon />
             </IconButton>
+
             <Typography variant="h6" noWrap component="div">
               Mini variant drawer
             </Typography>
+            <Box style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            </Box>
+
+
+
           </Toolbar>
         </AppBar>
       </Paper>
@@ -124,13 +141,13 @@ const Header = () => {
         <Divider />
         <List>
           {[
-            { name: "Dashboard", Icon: <DashboardIcon /> },
-            { name: "Order", Icon: <ShoppingCartIcon /> },
+            { name: "Dashboard", Icon: <DashboardIcon onClick={()=>handleDashboard()}/> },
+            { name: "Order", Icon: <ShoppingCartIcon onClick={()=>handleOrder()} /> },
             { name: "Customer", Icon: <PeopleIcon /> },
             { name: "Reports", Icon: <AssignmentIcon /> },
             { name: "Integrations", Icon: <LayersIcon /> },
           ].map((item, index) => (
-            <ListItem key={item.name} disablePadding>
+            <ListItem key={item.name} >
               <ListItemButton>
                 <ListItemIcon>
                   {item.Icon}
@@ -165,6 +182,12 @@ const Header = () => {
             </ListItem>
           ))}
         </List>
+        <Box style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingLeft:'10px'}}>
+        <ListItemButton >
+          <LogoutIcon onClick={()=>handleLogout()}/>
+          <Button sx={{color:'black', paddingLeft:'30px'}} onClick={()=>handleLogout()}>Logout</Button>
+          </ListItemButton>
+        </Box>
       </Drawer>
     </>
   )

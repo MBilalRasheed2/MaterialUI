@@ -13,6 +13,8 @@ import {
 } from "@mui/material";
 import HttpsIcon from "@mui/icons-material/Https";
 import { width } from "@mui/system";
+import { Link, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const LoginGrid = styled(Grid, { name: "login-grid" })({
   display: "flex",
   flexDirection: "column",
@@ -66,6 +68,13 @@ const CopyRight = styled(Typography)({
   });
 
 const SignUp = () => {
+  const navigate = useNavigate();
+const handleSignup=()=>{
+    navigate("/login")
+}
+const handleAlready=()=>{
+  navigate("/login")
+}
   return (
     <LoginGrid container md={12}>
       <Avatar sx={{ bgcolor: '#9c27b0', width: 46, height: 46 }}>
@@ -79,15 +88,22 @@ const SignUp = () => {
         </Grid>
         <FormInput fullWidth label="Email Address" variant="outlined" />
                 <FormInput fullWidth label="Password *" variant="outlined" />
-        <CheckboxInput
+                <Grid paddingTop={'20px'}>
+                <CheckboxInput
           control={<Checkbox defaultChecked />}
           label="I want to receive inspiration, marketing promotions and updates via email."
         />
-        <LoginButton fullWidth variant="contained">
+                </Grid>
+        
+        
+        <LoginButton fullWidth variant="contained" onClick={()=>handleSignup()}>
          Sign Up
         </LoginButton>
+      
         <Grid container alignSelf={"center"} justifyContent={"flex-end"}>
-          <ForgotButton>Already have an account? Sign in</ForgotButton>
+        
+          <ForgotButton onClick={()=>handleAlready()}>Already have an account? Sign in</ForgotButton>
+          
         </Grid>
         <CopyRight>Copyright © Your Website 2022.</CopyRight>
       </FormContainer>
