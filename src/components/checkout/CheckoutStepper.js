@@ -64,7 +64,10 @@ export default function HorizontalNonLinearStepper() {
     };
 
     return (
-        <Paper sx={{ width: '100%', marginY: '20px',py:4 }} elevation={2}>
+        <Paper sx={{ width: '100%', marginY: '20px', padding: '50px 40px 30px 30px' }} elevation={2}>
+            <Typography variant="h2" component="h2">
+                Checkout
+            </Typography>
             <Stepper nonLinear activeStep={activeStep}>
                 {steps.map((label, index) => (
                     <Step key={label} completed={completed[index]}>
@@ -73,6 +76,7 @@ export default function HorizontalNonLinearStepper() {
                         </StepButton>
                     </Step>
                 ))}
+
             </Stepper>
             <div>
                 {allStepsCompleted() ? (
@@ -126,9 +130,9 @@ const LoadStepForm = ({ step }) => {
     }
     else if (step === 1) {
         return <PaymentMethod />
-    }else if(step === 2) {
-        return <OrderSummary/>
-    }else{
-        return <Thankyou/>
+    } else if (step === 2) {
+        return <OrderSummary />
+    } else {
+        return <Thankyou />
     }
 }

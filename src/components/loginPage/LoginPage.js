@@ -2,6 +2,7 @@ import React from 'react'
 import { deepOrange, deepPurple } from '@mui/material/colors';
 import { Avatar, Button, Checkbox, FormControlLabel, FormGroup, Grid, styled, TextField, Typography } from '@mui/material'
 import HttpsIcon from '@mui/icons-material/Https';
+import { useNavigate } from 'react-router-dom';
 const LoginGrid = styled(Grid, { name: 'login-grid' })({
     display: 'flex',
     flexDirection: 'column',
@@ -62,6 +63,13 @@ const SignInTitle = styled(Typography)({
 
 
 const LoginPage = () => {
+    const navigate=useNavigate();
+   const handleLogin=()=>{
+    navigate("/")
+   }
+   const handleSignup=()=>{
+    navigate("/signup")
+   }
     return (
         <LoginGrid container md={12}>
             <Avatar sx={{ bgcolor: deepPurple[500], width: 46, height: 46 }}  >
@@ -75,10 +83,16 @@ const LoginPage = () => {
                 <FormInput fullWidth label="Email Address" variant="outlined" />
                 <FormInput fullWidth label="Password *" variant="outlined" />
                 <CheckboxInput control={<Checkbox defaultChecked />} label="Remember me" />
-                <LoginButton fullWidth variant='contained'>Login</LoginButton>
+             
+                <LoginButton fullWidth variant='contained' onClick={()=>handleLogin()}>Login</LoginButton>
+             
+                
                 <Grid container alignSelf={'center'} justifyContent={"space-between"}>
                     <ForgotButton >Forgot password?</ForgotButton>
-                    <ForgotButton>Don't have an account? Sign Up</ForgotButton>
+                    
+                    <ForgotButton onClick={()=>handleSignup()}>Don't have an account? Sign Up</ForgotButton>
+               
+                    
                 </Grid>
 
             </FormContainer>

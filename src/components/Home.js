@@ -70,7 +70,7 @@ const Home = () => {
     return (
 
         <Layout>
-            <Grid container spacing={2} marginY={2}>
+            <Grid container spacing={2} marginY={2} paddingTop={10}>
 
                 <Grid container md={12}>
                     <LargeGridGraph md={8}>
